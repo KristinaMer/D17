@@ -1,0 +1,34 @@
+{% extends 'flatpages/default.html' %}
+{% load i18n %}
+
+{% block content %}
+
+{% include 'auth.html' %}
+
+
+
+<h2>Страница авторизованного пользователя</h2>
+<br>
+<h1>{{request.user.username}}</h1>
+<br>
+Здесь может содержаться персональная информация для каждого пользователя
+<br>
+
+
+
+
+{% if is_not_authors %}
+<hr>
+<button> <a href="sign/upgrade/"> Хочу быть автором!</a> </button>
+{% endif %}
+
+
+
+{% endblock %}
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+Post
+{% endblock title %}
+
+{% block content %}
+
+{% include 'auth.html' %}
+
+<h1>Подробно</h1>
+<hr>
+        <table border = 0 width = 100% align = center>
+            <tr>
+                <td><h3>{{ post.header|censor }}</h3></td>
+            </tr>
+            <tr>
+                <td><b>{{ post.date_create|date:'d.m.Y' }}</b></td>
+            </tr>
+            <tr>
+                <td>{{ post.body|censor }}</td>
+            </tr>
+        </table>
+<br>
+{% for cat in post.name_category.all %}
+категория: <b>{{ cat }}</b>
+{% endfor %}
+
+
+{% if is_not_authors and user_auth %}
+<hr>
+<button> <a href="sign/upgrade/"> Хочу статус Author!</a> </button>
+{% endif %}
+
+
+{% if user_auth %}
+<hr>
+{% csrf_token %}
+        {% if not is_subscribersusers %}
+
+            <button><a href="{% url 'subscribe' post.pk %}">Подписаться</a></button><br>Подписаться на новости в этой категории
+        {% else %}
+
+            <button><a href="{% url 'unsubscribe' post.pk %}">Отписаться</a></button><br>Отписаться от новостей в этой категории
+        {% endif %}
+
+{% endif %}
+<br>
+<hr>
+
+<a href="/news/{{ post.id }}/edit/">Редактировать</a>&nbsp &nbsp &nbsp<a href="/news/{{ post.id }}/delete/">Удалить</a>
+
+{% endblock content %}

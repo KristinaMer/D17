@@ -1,0 +1,22 @@
+{% extends 'flatpages/default.html' %}
+
+
+{% block content %}
+
+{% include 'auth.html' %}
+
+<h1>Удалить публикацию</h1>
+<hr>
+<form action="" method="post">
+    {% csrf_token %}
+    <p>Подтверждение на удаление "{{ object.header }}"</p>
+    <input type="submit" value="Удалить" />
+</form>
+{% endblock content %}
+
+
+
+
+
+
+

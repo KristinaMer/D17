@@ -1,0 +1,13 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+
+{% include 'auth.html' %}
+
+<h2>Вы покинули Портал новостей</h2>
+<br>
+<h1>{{request.user.username}}</h1>
+
+
+
+{% endblock %}

@@ -1,0 +1,13 @@
+
+<table width="100%" border="0">
+        <tr>
+            <td align="right">
+                {% if request.user.username %}
+                <p>Пользователь: <a href="/welcome/">{{request.user.username}}</a> &nbsp|&nbsp <a href="/accounts/logout/">Выйти</a>
+                {% else %}
+                <a href="/accounts/login"> Войти в систему </a> | <a href="/accounts/signup"> Регистрация </a>
+                {% endif %}
+            </td>
+
+        </tr>
+    </table>
